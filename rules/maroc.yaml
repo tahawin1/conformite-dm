@@ -1,0 +1,628 @@
+# Règles réglementaires — Maroc (pays de destination)
+# Sources : Loi 84-12, Décret 2-14-607, Arrêté 2855-15 art. 2 (1) « dispositif
+# médical importé » — pièces administratives et techniques.
+# Pratique vérifiée sur un dossier réel accepté (UE, classe IIb, 2026) :
+# destinataire AMMPS, pièces numérotées, formulaire de l'annexe II pré-rempli.
+#
+# VERSION 2 — 2026-10-01. Remplace la version 1 (rules/historique/) :
+#   - autorité : AMMPS (Directeur général), qui a repris l'enregistrement des DM
+#   - retirés (non exigés par l'art. 2 (1) pour un DM importé, absents du dossier
+#     accepté) : bulletin d'analyse, dossier technique, mandataire au Maroc
+#   - ajoutés (art. 2 (1)) : quittance des droits, attestation du fabricant,
+#     déclaration de conformité, étiquetage, notice ; et, d'après le dossier
+#     accepté : catalogue, certificat d'enregistrement (annexe II) pré-rempli
+#   - certificat CE / équivalent : classes IIA, IIB, III et sous-classes IS, IM
+#   - numéro de chaque pièce dans le dossier déposé (`numero`)
+# 2.1 — 2026-10-01 : aucune pièce ajoutée ni retirée ; seulement des champs à
+#   lire en plus dans les documents reçus (coordonnées du fabricant, notice,
+#   étiquettes, catalogue), qui alimentent la fiche signalétique et l'annexe II
+#   remplies par le code (rules/formulaires_maroc.yaml).
+# 2.2 — 2026-10-01 : classe IR (classe I, instrument chirurgical réutilisable,
+#   règlement (UE) 2017/745, art. 52 (7) c) et annexe VIII règle 6), demandée
+#   par l'utilisateur. Absente de l'arrêté 2855-15 (antérieur au MDR) : traitée
+#   comme Is et Im (certificat CE ou équivalent exigé, l'organisme notifié
+#   n'intervenant que sur la réutilisation ; pas d'ISO 13485 exigé, comme pour
+#   la classe I). Traitement à confirmer auprès de l'AMMPS.
+# 2.3 — 2026-10-01 : origines États-Unis, Corée du Sud et Pakistan (demandées
+#   par l'utilisateur). Même exigence marocaine que « autre » (certificat de
+#   libre vente du pays d'origine, art. 2 (1)), avec le nom du document propre
+#   à chaque pays (rules/etats_unis.yaml, coree_du_sud.yaml, pakistan.yaml,
+#   encore provisoires : textes à indexer). Rapprochement des sept pays :
+#   rules/correspondances.yaml.
+# 2.4 — 2026-10-01 : décisions de l'entreprise sur sa checklist
+#   (rules/checklist_maroc.yaml) :
+#   - ISO 13485 exigé pour TOUTES les classes (plus exigeant que l'arrêté
+#     2855-15, art. 2 (1) a), qui le limite à IIa, IIb, III) ;
+#   - valeur unitaire du produit : échantillon modèle-vente sous 500 $,
+#     facture pro-forma à partir de 500 $ (pratique de l'entreprise) ;
+#   - « équipement médical » : note descriptive, documentation technique et
+#     manuel d'utilisation ; pas d'échantillon (art. 2 (1) b) : « ne
+#     constituant pas un équipement médical »).
+#   Photos : pièce 9 (dossier accepté), désormais distincte de l'échantillon.
+#   Nouvelles pièces sans numéro tant que l'entreprise n'a pas confirmé la
+#   numérotation attendue par l'AMMPS (n° 10 à 13 et 15 libres).
+# 2.5 — 2026-10-01 : réponses tirées des textes (à la demande de l'entreprise)
+#   pour les points restants de sa checklist :
+#   - libre vente : arrêté 2855-15, art. 2 (1) a) (« certificat de marquage CE,
+#     ou attestation FDA, ou autorisation de mise en vente (CVL) ou équivalent
+#     délivrée par les autorités compétentes du pays d'origine ») + checklist
+#     (FSC pour toutes les classes, délivré par l'autorité sanitaire) :
+#     hors UE, pièce 4 = autorisation du pays + FSC, TOUTES classes ; UE :
+#     certificat CE pour Is à III, et pour la classe I (sans organisme notifié)
+#     certificat de libre vente de l'État membre (règlement 2017/745, art. 60) ;
+#   - classe III UE : certificat d'évaluation de la documentation technique
+#     (MDR, art. 52 (3) et annexe IX) ou certificat d'examen CE de la
+#     conception (directive 93/42, annexe II.4) en complément de la pièce 4 ;
+#   - données cliniques : loi 84-12, art. 15 (investigation clinique ou
+#     évaluation des données cliniques par équivalence). UE : couvertes par le
+#     certificat CE (MDR, art. 61) ; hors UE, classes IIb et III (checklist) :
+#     rapport d'évaluation ou d'investigation clinique demandé ;
+#   - lettre de lien : arrêté 2855-15, art. 2 (1) a) (lien entre le fabricant
+#     et l'établissement demandeur) : quand le fournisseur est un distributeur,
+#     la chaîne fabricant -> distributeur doit être prouvée (case du dossier) ;
+#   - « déclaration de la société » : déclaration de l'établissement
+#     importateur, préalable à toute activité (loi 84-12, art. 7 ; modèle :
+#     arrêté 2853-15) — copie jointe au dossier ;
+#   - quittance des droits : exigée par l'arrêté 2855-15, art. 2 (1) a) — la
+#     loi prévaut, la pièce est gardée (hors numérotation) ;
+#   - numérotation : aucun texte ne fixe les numéros ; ceux du dossier accepté
+#     sont gardés, les pièces nouvelles restent sans numéro (en fin de liste).
+# 2.6 — 2026-10-02 : aucune pièce ajoutée ni retirée ; champs à lire en plus
+#   (essai réel Ciment osseux : cases restées vides) — étiquettes : liste des
+#   produits étiquetés avec leur REF ; notice : médicament, latex, phtalates,
+#   origine animale mentionnés.
+# 2.7 — 2026-10-02 : aucune pièce ajoutée ni retirée (matrice de contrôle
+#   Jenkins, scripts/ci_regles.py) — fondement (`source`) ajouté aux pièces 4
+#   Chine, Inde, UE et autre ; UE classe I : le certificat de libre vente porte
+#   le numéro 4 (il remplace le certificat CE, sans organisme notifié).
+# 2.8 — 2026-10-05 : aucune pièce ajoutée ni retirée. Pièce 4 Chine et Inde :
+#   remarque tirée de la loi (arrêté 2855-15 : CVL « ou équivalent » des
+#   autorités compétentes), de la checklist de l'entreprise (libre vente
+#   « effectué par ministre de la santé ») et des 15 dossiers acceptés : la
+#   majorité des fabricants chinois et indiens acceptés l'ont été avec leur
+#   certificat CE (Chine 2/5, Inde 4/5). Contrôle : un certificat de libre vente
+#   délivré par une autorité du commerce (ex. DGFT) est signalé non conforme.
+
+pays: maroc
+version: 2.8
+date_version: "2026-10-05"
+autorite: "Agence marocaine des médicaments et des produits de santé (AMMPS)"
+destinataire_demande: "Monsieur le Directeur Général de l'Agence Marocaine des Médicaments et des Produits de Santé (AMMPS)"
+# IS : classe I stérile ; IM : classe I avec fonction de mesurage (arrêté 2855-15)
+# IR : classe I instrument chirurgical réutilisable (règlement (UE) 2017/745) — voir 2.2
+classification: [I, IS, IM, IR, IIA, IIB, III]
+
+# nature (obligatoire pour chaque pièce) :
+#   a_rediger : document produit par l'entreprise — projet rédigé par
+#               Mistral (modèles de dossiers acceptés + textes), puis relu et
+#               validé par un humain.
+#   a_fournir : document émis par un tiers (autorité, organisme certifié,
+#               fabricant), paiement ou pièce physique — JAMAIS généré par le
+#               système : il est réclamé, puis vérifié par un humain.
+# fourni_par : pour les pièces a_fournir, qui émet le document.
+# numero     : place de la pièce dans le dossier déposé (dossier accepté :
+#              1 à 9, 14, 16 ; 10 à 13 et 15 sans objet pour un DM importé
+#              ordinaire). Absent : pièce exigée par le texte mais hors de la
+#              numérotation observée.
+# classes_concernees : si présent, la pièce n'est exigée que pour ces classes
+#              (classe inconnue : pièce conservée par prudence).
+# si_equipement : true = seulement pour un équipement médical ; false = jamais
+#              pour un équipement (absent : dans les deux cas).
+# si_origine : la pièce n'est exigée que pour ces pays d'origine.
+# si_distributeur : true = seulement si le fournisseur n'est pas le fabricant.
+# si_valeur_usd : {min: X} = valeur unitaire >= X ; {max: X} = valeur < X
+#              (valeur non saisie : la pièce « max » est retenue, la « min » non,
+#              et le dossier signale que la valeur manque).
+
+# Champs que l'agent extrait des documents reçus (pièces a_fournir). Seul ce
+# fichier décide quels champs sont lus ; l'IA ne fait que les retrouver dans le
+# document, avec la citation qui les justifie. type: texte | date
+modeles_champs:
+  certificat: &champs_certificat
+    - nom: numero
+      libelle: "Numéro du certificat"
+      description: "numéro, référence ou identifiant du certificat ou de l'autorisation"
+    - nom: emetteur
+      libelle: "Émis par"
+      description: "autorité ou organisme qui a délivré le document"
+    - nom: titulaire
+      libelle: "Titulaire (fabricant)"
+      description: "entreprise titulaire du certificat, en général le fabricant"
+    - nom: produit_couvert
+      libelle: "Produits couverts"
+      description: "dispositif(s) médical(aux) ou gamme de produits couverts par le document"
+    - nom: date_emission
+      libelle: "Date d'émission"
+      description: "date de délivrance ou d'émission du document"
+      type: date
+    - nom: date_expiration
+      libelle: "Valable jusqu'au"
+      description: "date de fin de validité ou d'expiration du document"
+      type: date
+  coordonnees_fabricant: &champs_coordonnees_fabricant
+    - nom: fabricant
+      libelle: "Fabricant"
+      description: "raison sociale de l'établissement de fabrication (sans l'adresse)"
+    - nom: adresse_fabricant
+      libelle: "Adresse du fabricant"
+      description: "adresse postale complète du fabricant (rue, code postal, ville, pays)"
+    - nom: contact_fabricant
+      libelle: "Contact du fabricant"
+      description: "téléphone, fax et adresse électronique du fabricant, tels qu'écrits"
+  document_fabricant: &champs_document_fabricant
+    - *champs_coordonnees_fabricant
+    - nom: produits
+      libelle: "Produits concernés"
+      description: "dispositif(s), noms commerciaux ou références concernés"
+    - nom: date_document
+      libelle: "Date du document"
+      description: "date à laquelle le document a été établi ou signé"
+      type: date
+    - nom: signataire
+      libelle: "Signataire"
+      description: "nom et fonction de la personne qui a signé le document"
+
+socle_commun:
+  - id: demande_signee
+    numero: 1
+    nom: "Lettre de demande d'enregistrement adressée au Directeur général de l'AMMPS"
+    nature: a_rediger
+    source: "Arrêté 2855-15, art. 2 (1) a) — 3 exemplaires, signée et cachetée"
+    consigne_redaction: >-
+      Lettre de demande d'octroi d'un certificat d'enregistrement, sur papier à
+      en-tête de l'établissement demandeur, adressée au Directeur général de
+      l'AMMPS : lieu et date, objet, désignation scientifique du dispositif,
+      nom commercial, intérêt médical, formule de politesse, cachet et
+      signature du représentant légal.
+  - id: fiche_signaletique
+    numero: 2
+    nom: "Fiche signalétique (modèle officiel, 3 exemplaires + version électronique)"
+    nature: a_rediger
+    source: "Arrêté 2855-15, art. 2 (1) a) — datée, signée et cachetée"
+    consigne_redaction: >-
+      Fiche signalétique au modèle officiel, rubrique par rubrique : 1. objet
+      de la demande ; 2. statut du dispositif (seul, kit, système, famille ;
+      importé) ; 3. identification (classe et sous-classe, stérile et méthode,
+      type, catégorie, codes GMDN/EMDN, désignation, nom de marque et noms
+      commerciaux, références, présentation, indications, domaine
+      thérapeutique, durée de validité, conservation) ; 4. composition
+      (médicament, composant sanguin, origine animale, nano-éléments,
+      radionucléide, rayonnements, latex, phtalates : oui/non et nature) ;
+      informations administratives (fabricant, établissement demandeur) ;
+      date, cachet et signature.
+  - id: attestation_fabricant
+    numero: 3
+    nom: "Attestation du fabricant (lien avec l'établissement demandeur)"
+    nature: a_fournir
+    fourni_par: "le fabricant ou son mandataire"
+    source: "Arrêté 2855-15, art. 2 (1) a)"
+    champs_a_extraire:
+      - *champs_document_fabricant
+      - nom: beneficiaire
+        libelle: "Établissement autorisé"
+        description: "établissement marocain désigné (distributeur, importateur) dans l'attestation"
+      - nom: date_fin
+        libelle: "Valable jusqu'au"
+        description: "date de fin de validité de l'autorisation, si elle est indiquée"
+        type: date
+  - id: iso_13485
+    numero: 5
+    nom: "Certificat ISO 13485 (système de management de la qualité)"
+    nature: a_fournir
+    fourni_par: "l'organisme de certification du fabricant"
+    source: "Arrêté 2855-15, art. 2 (1) a) (classes IIa, IIb, III) ; exigé pour toutes les classes par décision de l'entreprise (checklist, 2026-10-01)"
+    champs_a_extraire:
+      - *champs_certificat
+      - nom: norme
+        libelle: "Référentiel"
+        description: "norme certifiée, avec son année (ex. ISO 13485:2016)"
+    # classes_concernees retiré en 2.4 : toutes les classes (décision de l'entreprise)
+  - id: declaration_conformite
+    numero: 6
+    nom: "Déclaration de conformité du fabricant (exigences essentielles)"
+    nature: a_fournir
+    fourni_par: "le fabricant"
+    source: "Arrêté 2855-15, art. 2 (1) b)"
+    champs_a_extraire:
+      - *champs_document_fabricant
+      - nom: classe_indiquee
+        libelle: "Classe indiquée"
+        description: "classe de risque du dispositif indiquée dans la déclaration"
+      - nom: referentiel
+        libelle: "Référentiel"
+        description: "texte de référence déclaré (directive 93/42/CEE, règlement (UE) 2017/745…)"
+  - id: etiquetage
+    numero: 7
+    nom: "Projet d'étiquetage (signé et cacheté par le représentant légal)"
+    nature: a_fournir
+    fourni_par: "le fabricant (étiquettes), signées par l'établissement demandeur"
+    source: "Arrêté 2855-15, art. 2 (1) b)"
+    champs_a_extraire:
+      - *champs_coordonnees_fabricant
+      - nom: noms_commerciaux
+        libelle: "Noms commerciaux et références"
+        description: "nom(s) commercial(aux) et référence(s) (REF) imprimés sur les étiquettes"
+      - nom: references
+        libelle: "Produits étiquetés et références"
+        description: "chaque produit étiqueté avec sa référence REF, une ligne par produit au format « NOM COMMERCIAL | REF »"
+      - nom: sterilisation
+        libelle: "Stérilisation"
+        description: "mention STERILE et méthode de stérilisation (oxyde d'éthylène, rayonnement gamma…), si indiquée"
+      - nom: duree_validite
+        libelle: "Durée de validité"
+        description: "durée de conservation ou date de péremption indiquée (ex. 5 ans)"
+      - nom: conservation
+        libelle: "Conditions de conservation"
+        description: "conditions de stockage indiquées (température, humidité, lumière)"
+  - id: notice
+    numero: 8
+    nom: "Notice d'utilisation, partie en français (signée et cachetée)"
+    nature: a_fournir
+    fourni_par: "le fabricant (notice), signée par l'établissement demandeur"
+    source: "Arrêté 2855-15, art. 2 (1) b) — le cas échéant"
+    champs_a_extraire:
+      - *champs_coordonnees_fabricant
+      - nom: indications
+        libelle: "Indications"
+        description: "indications d'utilisation du dispositif (à quoi il sert, pour quelles pathologies)"
+      - nom: presentation
+        libelle: "Présentation"
+        description: "conditionnement : ce que contient la boîte ou l'emballage"
+      - nom: composition
+        libelle: "Composition"
+        description: "composants et matériaux du dispositif, y compris tout médicament, produit d'origine animale, latex ou phtalate mentionné"
+      - nom: contient_medicament
+        libelle: "Substance médicamenteuse"
+        description: "substance médicamenteuse contenue dans le dispositif (ex. antibiotique : gentamicine), si mentionnée"
+      - nom: contient_latex
+        libelle: "Latex"
+        description: "mention du latex (contient du latex, ou sans latex / latex free), si indiquée"
+      - nom: contient_phtalates
+        libelle: "Phtalates"
+        description: "mention des phtalates (DEHP), présence ou absence, si indiquée"
+      - nom: contient_origine_animale
+        libelle: "Produit d'origine animale"
+        description: "composant d'origine animale (collagène, gélatine…) et son origine, si mentionné"
+      - nom: sterilisation
+        libelle: "Stérilisation"
+        description: "mention stérile et méthode de stérilisation, si indiquée"
+      - nom: duree_validite
+        libelle: "Durée de validité"
+        description: "durée de conservation ou de validité du dispositif"
+      - nom: conservation
+        libelle: "Conditions de conservation"
+        description: "conditions de stockage (température, humidité, lumière)"
+  - id: echantillon
+    numero: 9
+    nom: "Photos du dispositif"
+    nature: a_fournir
+    fourni_par: "le fabricant"
+    source: "Pratique : dossier accepté (pièce 9) ; checklist de l'entreprise (toutes classes)"
+  - id: echantillon_modele_vente
+    nom: "Échantillon modèle-vente ou prototype"
+    nature: a_fournir  # pièce physique
+    fourni_par: "le fabricant"
+    source: "Arrêté 2855-15, art. 2 (1) b) — sauf équipement médical ; checklist : produit de moins de 500 $"
+    si_equipement: false
+    si_valeur_usd: {max: 500}
+  - id: facture_proforma
+    nom: "Facture pro-forma (remplace l'échantillon pour un produit de 500 $ ou plus)"
+    nature: a_fournir
+    fourni_par: "le fournisseur"
+    source: "Pratique de l'entreprise (checklist, 2026-10-01) — non citée par l'arrêté 2855-15"
+    si_valeur_usd: {min: 500}
+    champs_a_extraire:
+      - nom: vendeur
+        libelle: "Vendeur"
+        description: "nom et adresse du vendeur (fournisseur)"
+      - nom: numero
+        libelle: "Numéro de la facture"
+        description: "numéro de la facture pro-forma"
+      - nom: date_document
+        libelle: "Date"
+        description: "date de la facture pro-forma"
+        type: date
+      - nom: produits
+        libelle: "Produits, références et quantités"
+        description: "désignation des produits avec références, modèles et quantités"
+      - nom: montant
+        libelle: "Montant total et devise"
+        description: "prix unitaires, montant total et devise"
+      - nom: incoterm
+        libelle: "Incoterm"
+        description: "Incoterm (EXW, FOB, CIF…) et conditions de livraison"
+      - nom: pays_origine
+        libelle: "Pays d'origine des produits"
+        description: "pays d'origine indiqué pour les produits"
+  - id: catalogue
+    numero: 14
+    nom: "Catalogue du fabricant (références du dispositif)"
+    nature: a_fournir
+    fourni_par: "le fabricant"
+    source: "Pratique : dossier accepté (pièce 14)"
+    champs_a_extraire:
+      - nom: nom_marque
+        libelle: "Nom de marque"
+        description: "marque sous laquelle les produits sont vendus (souvent le nom du fabricant)"
+      - nom: references
+        libelle: "Noms commerciaux et références"
+        description: "liste des noms commerciaux du dispositif avec leur référence catalogue, une ligne par produit"
+  - id: certificat_enregistrement_annexe2
+    numero: 16
+    nom: "Certificat d'enregistrement au modèle de l'annexe II, partie I pré-remplie"
+    nature: a_rediger
+    source: "Arrêté 2855-15, annexe II — partie I réservée au demandeur (dossier accepté : pièce 16)"
+    consigne_redaction: >-
+      Partie I (réservée au demandeur) du certificat d'enregistrement :
+      statut du dispositif (seul, kit, système, famille ; importé),
+      désignation, nom de marque et noms commerciaux, présentation,
+      références, classe de risque, numéro de l'organisme notifié (code CE),
+      catégorie, nom et adresse de l'établissement marocain, nom et adresse
+      du fabricant, sous-traitant (NA sinon) ; annexe : tableau nom de
+      marque / noms commerciaux / références. Ne jamais remplir la partie 2
+      (réservée à l'administration).
+  - id: note_descriptive
+    nom: "Note descriptive de l'équipement"
+    nature: a_rediger
+    source: "Checklist de l'entreprise : demandée pour un équipement, remplie avec les informations du fabricant"
+    si_equipement: true
+    consigne_redaction: >-
+      Note descriptive de l'équipement médical : désignation, fabricant,
+      principe de fonctionnement, composants et accessoires, caractéristiques
+      techniques, usage prévu et indications, conditions d'installation et
+      d'utilisation, maintenance — uniquement d'après les informations du
+      fabricant, [À COMPLÉTER] sinon.
+  - id: documentation_technique
+    nom: "Documentation technique de l'équipement (check-list des exigences essentielles)"
+    nature: a_fournir
+    fourni_par: "le fabricant"
+    source: "Arrêté 2855-15, art. 2 (1) : documentation technique avec check-list des exigences essentielles ; checklist : demandée pour un équipement"
+    si_equipement: true
+  - id: manuel_utilisation
+    nom: "Manuel d'utilisation de l'équipement"
+    nature: a_fournir
+    fourni_par: "le fabricant"
+    source: "Arrêté 2855-15, art. 2 (1) b) (notice) ; checklist : manuel d'utilisation pour un équipement"
+    si_equipement: true
+    champs_a_extraire:
+      - *champs_coordonnees_fabricant
+      - nom: usage_prevu
+        libelle: "Usage prévu"
+        description: "usage prévu (intended use) et indications médicales"
+      - nom: maintenance
+        libelle: "Maintenance"
+        description: "maintenance, nettoyage, désinfection prévus"
+      - nom: duree_vie
+        libelle: "Durée de vie"
+        description: "durée de vie de l'équipement ou péremption"
+  - id: certificat_libre_vente_ue
+    numero: 4  # tient la place du certificat CE : classe I sans organisme notifié
+    nom: "Certificat de libre vente délivré par l'autorité compétente de l'État membre (classe I sans organisme notifié)"
+    nature: a_fournir
+    fourni_par: "l'autorité compétente de l'État membre (via le fabricant ou son mandataire)"
+    source: "Règlement (UE) 2017/745, art. 60 ; arrêté 2855-15, art. 2 (1) a) (« CVL ou équivalent ») ; checklist : FSC toutes classes"
+    si_origine: [union_europeenne]
+    classes_concernees: [I]
+    champs_a_extraire: &champs_libre_vente
+      - nom: pays_emetteur
+        libelle: "Pays émetteur"
+        description: "pays dont l'autorité a délivré le certificat"
+      - nom: emetteur
+        libelle: "Autorité émettrice"
+        description: "autorité sanitaire (ministère, agence) qui a délivré le certificat"
+      - nom: numero
+        libelle: "N° du certificat"
+        description: "numéro du certificat de libre vente"
+      - nom: titulaire
+        libelle: "Fabricant"
+        description: "nom du fabricant cité dans le certificat"
+      - nom: produit_couvert
+        libelle: "Produits / références"
+        description: "dispositifs et références couverts par le certificat"
+      - nom: date_emission
+        libelle: "Date d'émission"
+        description: "date de délivrance du certificat"
+        type: date
+      - nom: date_expiration
+        libelle: "Valable jusqu'au"
+        description: "date de fin de validité du certificat, si indiquée"
+        type: date
+  - id: certificat_evaluation_classe_iii
+    nom: "Certificat d'évaluation de la documentation technique (MDR) ou certificat d'examen CE de la conception (directive 93/42) — classe III"
+    nature: a_fournir
+    fourni_par: "l'organisme notifié (via le fabricant)"
+    source: "Règlement (UE) 2017/745, art. 52 (3) et annexe IX ; directive 93/42/CEE, annexe II.4 ; checklist : classe III"
+    si_origine: [union_europeenne]
+    classes_concernees: [III]
+    champs_a_extraire:
+      - *champs_certificat
+      - nom: numero_organisme_notifie
+        libelle: "N° de l'organisme notifié"
+        description: "numéro d'identification à 4 chiffres de l'organisme notifié"
+  - id: evaluation_clinique
+    nom: "Rapport d'évaluation clinique ou d'investigation clinique"
+    nature: a_fournir
+    fourni_par: "le fabricant"
+    source: "Loi 84-12, art. 15 (investigation clinique ou évaluation des données cliniques par équivalence) ; checklist : IIb et III, inutile avec un certificat CE (UE)"
+    si_origine: [chine, inde, etats_unis, coree_du_sud, pakistan, autre]
+    classes_concernees: [IIB, III]
+    champs_a_extraire:
+      - nom: titre
+        libelle: "Identification de l'étude"
+        description: "titre, code ou version du rapport d'évaluation ou d'investigation clinique"
+      - nom: dispositif
+        libelle: "Dispositif concerné"
+        description: "dispositif, modèle ou version évalué"
+      - nom: type_etude
+        libelle: "Type d'étude"
+        description: "investigation clinique, évaluation par équivalence, étude observationnelle…"
+      - nom: conclusion
+        libelle: "Conclusion"
+        description: "conclusion sur la sécurité, la performance et le rapport bénéfice/risque"
+      - nom: date_document
+        libelle: "Date du rapport"
+        description: "date du rapport"
+        type: date
+  - id: lettre_de_lien
+    nom: "Lettre de lien fabricant – distributeur (fournisseur autre que le fabricant)"
+    nature: a_fournir
+    fourni_par: "le fabricant et le distributeur"
+    source: "Arrêté 2855-15, art. 2 (1) a) (lien entre le fabricant et l'établissement demandeur) ; checklist : lettre de lien"
+    si_distributeur: true
+    champs_a_extraire:
+      - *champs_coordonnees_fabricant
+      - nom: partenaire
+        libelle: "Distributeur / promoteur"
+        description: "nom et adresse du partenaire (distributeur ou promoteur) désigné par le fabricant"
+      - nom: nature_relation
+        libelle: "Nature de la relation"
+        description: "promotion, distribution, représentation"
+      - nom: produits
+        libelle: "Produits concernés"
+        description: "produits, références ou gammes concernés"
+      - nom: territoire
+        libelle: "Territoire"
+        description: "territoire ou marché couvert"
+      - nom: date_fin
+        libelle: "Valable jusqu'au"
+        description: "durée de l'accord ou date de fin de validité"
+        type: date
+  - id: declaration_etablissement
+    nom: "Copie de la déclaration de l'établissement importateur (et de son récépissé)"
+    nature: a_fournir
+    fourni_par: "l'établissement demandeur (dossier interne)"
+    source: "Loi 84-12, art. 7 (déclaration préalable de tout établissement d'importation) ; arrêté 2853-15 (modèle) ; checklist : « déclaration de la société »"
+  - id: quittance_droits
+    nom: "Copie de la quittance des droits d'enregistrement"
+    nature: a_fournir  # paiement effectué par l'établissement demandeur
+    fourni_par: "l'établissement demandeur (paiement des droits)"
+    source: "Arrêté 2855-15, art. 2 (1) a) : « une copie de la quittance des droits d'enregistrement » — exigée par la loi, gardée (hors numérotation du dossier accepté)"
+
+piece_specifique_selon_origine:
+  chine:
+    numero: 4
+    document: "Autorisation de mise en vente délivrée par la NMPA (ou certificat équivalent chinois) + certificat de libre vente (FSC)"
+    nature: a_fournir
+    fourni_par: "la NMPA (via le fabricant)"
+    remarque: >-
+      Certificat de libre vente délivré par l'administration de santé chinoise
+      (NMPA ou administration provinciale des produits médicaux, « 药监 »),
+      comme l'exige la checklist (« effectué par ministre de la santé ») ; un
+      certificat d'une chambre de commerce (CCPIT) ne suffit pas. Fabricant
+      chinois marqué CE (2 dossiers acceptés sur 5) : créer le dossier avec
+      « Union européenne » comme pays d'origine — la preuve est alors le
+      certificat CE.
+    source: "Arrêté 2855-15, art. 2 (1) a) (« autorisation de mise en vente (CVL) ou équivalent délivrée par les autorités compétentes du pays d'origine ») ; Règlement chinois n° 739, art. 13 à 18 (enregistrement NMPA)"
+    champs_a_extraire: &champs_autorisation
+      - *champs_certificat
+      - nom: classe_indiquee
+        libelle: "Classe indiquée"
+        description: "classe du dispositif indiquée sur le document"
+    traduction_requise: true
+    legalisation_requise: true
+    classes_concernees: &classes_toutes [I, IS, IM, IR, IIA, IIB, III]  # 2.5 : FSC toutes classes (checklist)
+  inde:
+    numero: 4
+    document: "Autorisation de mise en vente délivrée par la CDSCO + certificat de libre vente (FSC)"
+    nature: a_fournir
+    fourni_par: "la CDSCO (via le fabricant)"
+    remarque: >-
+      Certificat de libre vente délivré par l'autorité de santé indienne
+      (CDSCO ou autorité de l'État), comme l'exige la checklist (« effectué par
+      ministre de la santé ») ; un certificat de la DGFT (ministère du
+      Commerce, établi sur déclaration du fabricant) a été accepté une fois mais
+      n'est pas conforme à la checklist. Fabricant indien marqué CE (4 dossiers
+      acceptés sur 5) : créer le dossier avec « Union européenne » comme pays
+      d'origine — la preuve est alors le certificat CE.
+    source: "Arrêté 2855-15, art. 2 (1) a) (« autorisation de mise en vente (CVL) ou équivalent ») ; Medical Devices Rules 2017 (Inde), règles 34 à 36 (licence CDSCO)"
+    champs_a_extraire: *champs_autorisation
+    traduction_requise: true
+    legalisation_requise: true
+    classes_concernees: *classes_toutes
+  union_europeenne:
+    numero: 4
+    document: "Certificat de marquage CE délivré par un organisme notifié (+ lettre de confirmation si certificat MDD expiré)"
+    nature: a_fournir
+    fourni_par: "l'organisme notifié (via le fabricant)"
+    source: "Arrêté 2855-15, art. 2 (1) a) (« certificat de marquage CE ») ; Règlement (UE) 2017/745, art. 52 et 56 ; Règlement (UE) 2023/607 (transition)"
+    remarque: >-
+      Un certificat CE délivré au titre de la directive 93/42/CEE et expiré
+      sur le papier reste valable s'il est accompagné de la lettre de
+      confirmation de l'organisme notifié prévue par le règlement (UE)
+      2023/607 : joindre les deux (dossier accepté : pièce 4).
+    champs_a_extraire:
+      - *champs_certificat
+      - nom: numero_organisme_notifie
+        libelle: "N° de l'organisme notifié"
+        description: "numéro d'identification à 4 chiffres de l'organisme notifié"
+      - nom: classe_indiquee
+        libelle: "Classe indiquée"
+        description: "classe du dispositif indiquée sur le certificat"
+    traduction_requise: false
+    legalisation_requise: false
+    classes_concernees: [IS, IM, IR, IIA, IIB, III]  # classe I : certificat de libre vente (socle, art. 60 MDR)
+  etats_unis:
+    numero: 4
+    document: "Autorisation FDA (lettre 510(k), approbation PMA ou décision De Novo) + Certificate to Foreign Government (CFG) de la FDA"
+    nature: a_fournir
+    fourni_par: "la FDA (via le fabricant)"
+    source: "Arrêté 2855-15, art. 2 (1) — certificat de libre vente du pays d'origine ; document américain : rules/etats_unis.yaml (vérifié)"
+    remarque: >-
+      Classes américaines I à III : la classe II couvre des dispositifs IIa et
+      IIb (voir le rapprochement des pays). Le CFG atteste la libre vente aux
+      États-Unis ; joindre aussi la lettre d'autorisation (K…, P… ou DEN…).
+    champs_a_extraire: *champs_autorisation
+    traduction_requise: true
+    legalisation_requise: true
+    classes_concernees: *classes_toutes
+  coree_du_sud:
+    numero: 4
+    document: "Certificat d'autorisation, de certification ou de notification MFDS + certificat de libre vente (Certificate of Free Sale) du MFDS"
+    nature: a_fournir
+    fourni_par: "le MFDS (via le fabricant)"
+    source: "Arrêté 2855-15, art. 2 (1) — certificat de libre vente du pays d'origine ; autorisation MFDS : Medical Devices Act, art. 15 (2) ; document coréen : rules/coree_du_sud.yaml (vérifié)"
+    remarque: >-
+      Classes coréennes I à IV, proches des classes marocaines I, IIa, IIb, III
+      (attention : la classe IV coréenne correspond à la classe III). Documents
+      en coréen : traduction assermentée en français.
+    champs_a_extraire: *champs_autorisation
+    traduction_requise: true
+    legalisation_requise: true
+    classes_concernees: *classes_toutes
+  pakistan:
+    numero: 4
+    document: "Certificat d'enregistrement ou d'inscription DRAP + certificat de libre vente (Free Sale Certificate) de la DRAP"
+    nature: a_fournir
+    fourni_par: "la DRAP (via le fabricant)"
+    source: "Arrêté 2855-15, art. 2 (1) — certificat de libre vente du pays d'origine ; document pakistanais : rules/pakistan.yaml (provisoire)"
+    remarque: >-
+      Classes pakistanaises A à D (alignées sur l'IMDRF), proches des classes
+      I, IIa, IIb, III.
+    champs_a_extraire: *champs_autorisation
+    traduction_requise: true
+    legalisation_requise: true
+    classes_concernees: *classes_toutes
+  autre:
+    numero: 4
+    document: "Certificat de libre vente visé par l'autorité de tutelle du pays d'origine (ou attestation FDA, ou équivalent)"
+    nature: a_fournir
+    fourni_par: "l'autorité de tutelle du pays d'origine (via le fabricant)"
+    source: "Arrêté 2855-15, art. 2 (1) a) (« certificat de marquage CE, ou attestation FDA, ou autorisation de mise en vente (CVL) ou équivalent »)"
+    champs_a_extraire: *champs_autorisation
+    traduction_requise: true
+    legalisation_requise: true
+    classes_concernees: *classes_toutes
+
+contraintes_operationnelles:
+  jours_depot_physique: [mercredi, jeudi]
+  validite_enregistrement_ans: 5
+  renouvelable: true
+  exemplaires_demande_et_fiche: 3
+  langue_etiquetage: [francais, arabe]
+  langue_toleree_usage_professionnel_importe: [anglais]
+
+notes:
+  - "Le Maroc accepte les certificats étrangers comme pièce justificative — système plus souple que l'UE."
+  - "Toutes les pièces administratives et la déclaration de conformité sont datées, signées et cachetées par le représentant légal de l'établissement marocain (arrêté 2855-15, art. 3)."
+  - "Classe IR (instrument chirurgical réutilisable, règlement (UE) 2017/745) : absente de l'arrêté 2855-15, traitée comme Is/Im (certificat CE exigé) — à confirmer auprès de l'AMMPS."
+  - "Pièces 10 à 13 et 15 de la numérotation : sans objet pour un DM importé ordinaire (confirmé par l'utilisateur, 2026-10-01)."

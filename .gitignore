@@ -1,0 +1,24 @@
+# Environnement Python
+.venv/
+__pycache__/
+*.pyc
+
+# Documents générés (contiennent des données de dossiers réels)
+output/*
+!output/.gitkeep
+
+# Textes intermédiaires
+data/processed/*
+!data/processed/.gitkeep
+
+# Poids de modèles (téléchargés séparément, jamais versionnés)
+*.gguf
+
+# Secrets du serveur (POSTGRES_PASSWORD, API_KEY…)
+.env
+
+# Dossiers réels de l'entreprise (confidentiels) : jamais versionnés
+data/dossiers_valides/
+
+# Profil réel de l'entreprise (sur le serveur uniquement)
+config/entreprise.yaml

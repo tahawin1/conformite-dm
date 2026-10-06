@@ -1,0 +1,109 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: conformite-postgres
+    restart: unless-stopped  # relancé avec Docker (redémarrage du serveur ou d'Ubuntu)
+    environment:
+      POSTGRES_DB: conformite_dm
+      POSTGRES_USER: conformite
+      # Définir POSTGRES_PASSWORD dans un fichier .env (jamais versionné) sur le serveur
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changer_ce_mot_de_passe}
+    ports:
+      - "127.0.0.1:5432:5432"  # accessible uniquement depuis la machine elle-même
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: conformite-qdrant
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:6333:6333"
+      - "127.0.0.1:6334:6334"
+    volumes:
+      - qdrant_data:/qdrant/storage
+
+  # Backend FastAPI — démarré seulement avec : docker compose --profile api up -d
+  # (en développement, on le lance plutôt avec uvicorn, voir README.md)
+  api:
+    profiles: [api]
+    build: .
+    container_name: conformite-api
+    depends_on: [postgres, qdrant]
+    environment:
+      DATABASE_URL: postgresql+psycopg://conformite:${POSTGRES_PASSWORD:-changer_ce_mot_de_passe}@postgres:5432/conformite_dm
+      QDRANT_HOST: qdrant
+      OLLAMA_BASE_URL: http://host.docker.internal:11434
+      API_KEY: ${API_KEY:-}  # à définir dans le fichier .env du serveur
+      EXIGER_API_KEY: "1"  # l'API refuse de démarrer sans API_KEY
+      CORS_ORIGINS: ${CORS_ORIGINS:-*}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"  # joindre Ollama qui tourne sur l'hôte
+    ports:
+      - "127.0.0.1:8000:8000"  # exposé à l'extérieur uniquement via le tunnel
+    volumes:
+      - ./output:/app/output  # projets DOCX générés, conservés hors du conteneur
+      - ./config:/app/config:ro  # profil de l'entreprise (config/entreprise.yaml, jamais versionné)
+      - ./data/dossiers_valides:/app/data/dossiers_valides:ro  # dossiers acceptés = modèles de rédaction
+    restart: unless-stopped
+
+  # Tableau de bord servi sur le réseau de l'entreprise : http://IP-du-serveur
+  # (démarré avec : docker compose --profile api --profile interface up -d)
+  interface:
+    profiles: [interface]
+    build:
+      context: .
+      dockerfile: deploiement/interface/Dockerfile
+    container_name: conformite-interface
+    depends_on: [api]
+    ports:
+      - "${INTERFACE_PORT:-80}:80"  # ouvert au réseau interne ; l'API reste derrière nginx
+    restart: unless-stopped
+
+  # Tunnel ngrok vers l'API — démarré avec : docker compose --profile api --profile ngrok up -d
+  # NGROK_AUTHTOKEN et NGROK_URL (domaine statique gratuit, ex. xxx.ngrok-free.app)
+  # à définir dans le fichier .env du serveur. Voir DEPLOIEMENT.md.
+  ngrok:
+    profiles: [ngrok]
+    image: ngrok/ngrok:latest
+    container_name: conformite-ngrok
+    depends_on: [api]
+    environment:
+      NGROK_AUTHTOKEN: ${NGROK_AUTHTOKEN:-}
+    command: ["http", "api:8000", "--url", "${NGROK_URL:-}", "--log", "stdout"]
+    ports:
+      - "127.0.0.1:4040:4040"  # interface d'inspection ngrok, locale uniquement
+    restart: unless-stopped
+
+  # Intégration continue — démarré avec : sudo bash scripts/installer_jenkins.sh
+  # Réseau de l'hôte : joint Ollama (127.0.0.1:11434) et l'API comme le serveur.
+  # Socket Docker de l'hôte : Jenkins lance ses conteneurs de test et reconstruit
+  # l'outil — il a donc les droits de Docker : accès réservé au compte admin.
+  jenkins:
+    profiles: [jenkins]
+    build: deploiement/jenkins
+    container_name: conformite-jenkins
+    network_mode: host
+    user: root
+    environment:
+      JENKINS_OPTS: "--httpPort=${JENKINS_PORT:-8081}"
+      JENKINS_ADMIN_PASSWORD: ${JENKINS_ADMIN_PASSWORD:-}
+      JENKINS_DEPOT: ${JENKINS_DEPOT:-https://github.com/tahawin1/conformite-dm.git}
+      JENKINS_BRANCHE: ${JENKINS_BRANCHE:-main}
+    volumes:
+      # même chemin dans Jenkins et sur l'hôte : les « docker run -v $WORKSPACE » du Jenkinsfile fonctionnent
+      - /var/jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /opt/conformite:/opt/conformite  # déploiement (étape validée par une personne)
+      - /var/backups/conformite:/var/backups/conformite  # sauvegarde faite avant chaque déploiement
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  qdrant_data:
+
+# Ollama n'est volontairement pas conteneurisé ici : à installer directement
+# sur la machine hôte (ou le serveur GPU dédié) pour un accès direct au GPU.
+# Il doit écouter sur une adresse joignable depuis Docker :
+#   OLLAMA_HOST=0.0.0.0:11434 ollama serve   (et bloquer le port 11434 au pare-feu)
+# Voir DEPLOIEMENT.md.
